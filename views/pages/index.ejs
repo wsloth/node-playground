@@ -5,23 +5,50 @@
 </head>
 
 <body>
-
   <% include ../partials/nav.ejs %>
 
-
-<section class="row">
+<div class="container main-page">
   <div class="col-md-12">
-    <textarea
-      class="col-md-6 full-height"
-      id="pad"
-      placeholder="Write your text here..">
-    </textarea>
 
-    <div class="col-md-6 full-height" id="markdown"></div>
+    <div class="no-padding">
+      <div class="col-md-6 text-center">
+        <h2>Markdown</h2>
+      </div>
+      <div class="col-md-6 text-center">
+        <h2>Result</h2>
+      </div>
+
+
+    <div class="col-md-12">
+      <hr/>
+    </div>
   </div>
-</section>
 
- <script src="https://cdn.rawgit.com/showdownjs/showdown/1.0.2/dist/showdown.min.js"></script>
+    <section class="row no-padding">
+        <div class="col-md-6">
+          <textarea class="full-height" id="pad" placeholder="Write your text here..."></textarea>
+        </div>
+
+        <div class="col-md-6">
+          <div class="full-height" id="markdown"></div>
+        </div>
+    </section>
+
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12 text-center">
+    <br/>
+    <p>Made by Wessel Loth</p>
+  </div>
+</div>
+
+<script src="https://cdn.rawgit.com/showdownjs/showdown/1.0.2/dist/showdown.min.js"></script>
+<script src="/channel/bcsocket.js"></script>
+<script src="/share/share.uncompressed.js"></script>
+<script src="/share/textarea.js"></script>
+<script type="text/javascript" src="/javascripts/convert.js"></script>
 
 </body>
 </html>

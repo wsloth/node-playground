@@ -1,5 +1,28 @@
-html, body, section, .full-height {
-    height: 100%;
+body {
+   background:#eee !important;
+}
+
+@media (min-width: 768px) {
+  .navbar-nav {
+    float: left;
+    margin-left: -1em !important;
+  }
+}
+
+.main-page {
+  background: white !important;
+  border-radius: 3px;
+  margin-top: -1.3em !important;
+}
+
+.full-height {
+    min-height: 600px !important;
+    max-height: 601px !important;
+}
+
+.no-padding > .col-md-6, .col-md-12 {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
 }
 
 #pad{
@@ -10,12 +33,16 @@ html, body, section, .full-height {
     outline: none;
     resize: none;
 
+    width: 100%;
+
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
     box-shadow: none;
+    padding-left: 1em;
 }
 
 #markdown {
     overflow: auto;
-    border-left: 1px solid black;
+    border-left: 1px solid #eee;
+    padding-left: 1em;
 }
