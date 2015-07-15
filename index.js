@@ -1,5 +1,7 @@
 var express = require('express');
 var app = express();
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
 
 // set the view engine to ejs
 app.set('view engine', 'ejs');
@@ -9,24 +11,25 @@ app.use(express.static(__dirname + '/public'));
 
 // routes for app
 app.get('/', function(req, res) {
-  res.render('pad');
-});
-app.get('/(:id)', function(req, res) {
-  res.render('pad');
+  res.render('pages/index.ejs');
 });
 
-// get sharejs dependencies
-var sharejs = require('share');
-require('redis');
+// Socket code
+io.on('connection', function(socket) {
+  console.log('a user connected');
 
-// options for sharejs
-var options = {
-  db: {type: 'redis'},
-};
+  socket.on('disconnect', function () {
+    console.log('user disconnected');
+  });
 
-// attach the express server to sharejs
-sharejs.server.attach(app, options);
+  socket.on('pad change', function (value) {
+    console.log(value);
+    io.emit('fresh pad', value);
+  });
+});
 
 // listen on port 8000 (for localhost) or the port defined for heroku
 var port = process.env.PORT || 8000;
-app.listen(port);
+http.listen(port, function () {
+  console.log("Listening on *:8000");
+});
