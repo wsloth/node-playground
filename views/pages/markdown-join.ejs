@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Collaborative Markdown</title>
+  <% include ../partials/header.ejs %>
+</head>
+
+<body>
+  <% include ../partials/nav.ejs %>
+
+  <div class="container">
+    <div class="col-md-4 col-md-offset-4 panel panel-default">
+      <div class="panel-body">
+        <h2 class="text-center">Join a room</h2><br/>
+
+        <div>
+          <div class="col-xs-9" style="padding-right: -0.5em!important;">
+            <input type="text" class="form-control"
+              id="roomInput" placeholder="Room name..."/>
+          </div>
+          <div class="col-xs-3" style="padding-left: 0!important;">
+            <button class="btn btn-primary" onclick="joinRoom()">Join</button>
+          </div>
+        </div>
+        <br/><br/><br/>
+        <span class="text-center" id="connectingMessage">
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <% include ../partials/footer.ejs %>
+
+<script>
+var joinRoom = function () {
+  var status = document.getElementById('connectingMessage');
+  var room = document.getElementById('roomInput').value;
+  status.innerHTML = "<p><em>Joining \"" + room + "\"...</em></p>";
+
+  if (room != "") {
+    window.location.replace("http://localhost:8000/markdown/" + room);
+  };
+}
+</script>
+
+</body>
+</html>
