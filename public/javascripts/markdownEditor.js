@@ -3,7 +3,7 @@ var converter = new showdown.Converter();
 var markdownArea = document.getElementById('markdown');
 var previousMarkdownValue = '';
 // TODO: Change URL to website URL
-var socket = io('http://localhost:8000/markdown');
+var socket = io('https://guarded-caverns-6433.herokuapp.com/markdown');
 var room = window.location.href.split("/").pop();
 socket.emit('mdroom', room);
 
