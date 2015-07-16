@@ -41,12 +41,21 @@ $("#preface-submit").click(function() {
     return;
   }
 
-  loadJS('/javascripts/chatController.js', function() {
-      loadJS('//cdn.jsdelivr.net/emojione/1.4.1/lib/js/emojione.min.js');
-      $('head').append('<link rel="stylesheet" href="//cdn.jsdelivr.net/emojione/1.4.1/assets/css/emojione.min.css"/>')
-      initializeChat(nickname, room);
-  });
-
   socket = io('http://localhost:8000/chat');
-  console.log("Chat sockets initialized..");
+  console.log("Chat sockets initialized");
+
+  console.log('Loading scripts...');
+
+
+  loadJS('//cdn.jsdelivr.net/emojione/1.4.1/lib/js/emojione.min.js', function() {});
+  loadJS('/libs/textcomplete/jquery.textcomplete.min.js', function() {});
+          
+  console.log('All scripts loaded');
+      
+  loadJS('/javascripts/chatController.js', function() {
+    $('head').append('<link rel="stylesheet" href="//cdn.jsdelivr.net/emojione/1.4.1/assets/css/emojione.min.css"/>');
+    $('head').append('<link rel="stylesheet" href="/libs/textcomplete/jquery.textcomplete.css"/>');
+    initializeChat(nickname, room);
+  });
+  
 });
