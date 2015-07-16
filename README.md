@@ -1,36 +1,29 @@
-# node-js-getting-started
+# node-playground
 
-A barebones Node.js app using [Express 4](http://expressjs.com/).
+Simple webapplication using mostly [Node.js](http://nodejs.org/) and [Socket.io](http://socket.io/). It has a few features using websockets to make
+a more interactive website.
 
-This application supports the [Getting Started with Node on Heroku](https://devcenter.heroku.com/articles/getting-started-with-nodejs) article - check it out.
+These features include:
+
+- Live collaborative markdown editor with multiple rooms
+- _coming soon: chatroom..._
 
 ## Running Locally
 
-Make sure you have [Node.js](http://nodejs.org/) and the [Heroku Toolbelt](https://toolbelt.heroku.com/) installed.
+Make sure you have [Node.js](http://nodejs.org/), and then run the following commands.
 
 ```sh
-$ git clone git@github.com:heroku/node-js-getting-started.git # or clone your own fork
-$ cd node-js-getting-started
 $ npm install
-$ npm start
+$ node index
 ```
 
-Your app should now be running on [localhost:5000](http://localhost:5000/).
+Your app should now be running on [localhost:8000](http://localhost:8000/).
 
-## Deploying to Heroku
 
-```
-$ heroku create
-$ git push heroku master
-$ heroku open
-```
 
 ## Documentation
 
-For more information about using Node.js on Heroku, see these Dev Center articles:
+For more information about using Node.js and Socket.io, check out these articles:
 
-- [Getting Started with Node.js on Heroku](https://devcenter.heroku.com/articles/getting-started-with-nodejs)
-- [Heroku Node.js Support](https://devcenter.heroku.com/articles/nodejs-support)
-- [Node.js on Heroku](https://devcenter.heroku.com/categories/nodejs)
+- [Socket.io documentation](http://socket.io/docs/)
 - [Best Practices for Node.js Development](https://devcenter.heroku.com/articles/node-best-practices)
-- [Using WebSockets on Heroku with Node.js](https://devcenter.heroku.com/articles/node-websockets)
