@@ -3,13 +3,13 @@ var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
-// set the view engine to ejs
+// User the EJS view engine
 app.set('view engine', 'ejs');
 
-// public folder to store assets
+// Static file serving
 app.use(express.static(__dirname + '/public'));
 
-// routes for app
+// App routing
 app.get('/markdown', function(req, res) {
   res.render('pages/markdown-join.ejs');
 });
@@ -20,7 +20,7 @@ app.get('/chat', function(req, res) {
   res.render('pages/chat.ejs');
 });
 
-/* Socket.io handling --------------------------------------------------------*/
+// Markdown editor networking code
 var markdownEditor = io.of('/markdown');
 markdownEditor.on('connection', function (socket) {
   console.log('A new user connected');
@@ -47,10 +47,12 @@ markdownEditor.on('connection', function (socket) {
 
 });
 
+
+// Chatroom networking code
 var chatRoom = io.of('/chat');
 chatRoom.on('connection', function(connection) {
   connection.on('connection', function(socket) {
-    console.log('A new user connected');
+    console.log('A new user connected to the chat');
 
     socket.on('disconnect', function (socket) {
       console.log('A user disconnected');
@@ -58,7 +60,6 @@ chatRoom.on('connection', function(connection) {
 
   });
 });
-/* -------------------------------------------------------------------------- */
 
 app.use(function(req, res) {
   // TODO: Make a 404 page

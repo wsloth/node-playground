@@ -1,0 +1,42 @@
+body {
+  background: #f2f2f2;
+  color: #212121;
+}
+
+#preface {
+  margin-top: 5em;
+}
+
+#preface-form-error {
+  display: none;
+}
+
+#loading {
+  position: absolute;
+  top: 46%;
+  left: 48%;
+  display: none;
+}
+
+#chat-app {
+  display: none;
+}
+
+
+/* App css styles
+---------------------- */
+
+@media only screen and (min-width: 992px) {
+  header, main, footer {
+    padding-left: 240px;
+  }
+
+  nav {
+    padding-right: 240px;
+    margin-right: 240px;
+  }
+
+  .brand-logo {
+    margin-left: 0.7em;
+  }
+}

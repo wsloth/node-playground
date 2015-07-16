@@ -2,23 +2,31 @@
 <html>
   <head>
     <title>Chatroom with websockets</title>
-    <% include ../partials/header.ejs %>
+    <% include ../partials/head.ejs %>
+    <link rel="stylesheet" href="/stylesheets/app.css" />
   </head>
 
   <body>
-    <% include ../partials/nav.ejs %>
 
-    <div class="container main-page">
-      <div class="col-md-12">
-        <h1>Chatroom</h1>
+    <div class="container" id="main-wrapper">
 
+      <section id="preface">
+        <% include chat/preface.ejs %>
+      </section>
 
-      </div>
+      <section id="loading">
+        <div class="preloader-wrapper big active" id="preface-spinner">
+          <% include ../partials/spinner.ejs %>
+        </div>
+      </section>
+
+      <section id="chat-app">
+        <% include chat/app.ejs %>
+      </section>
     </div>
 
-    <% include ../partials/footer.ejs %>
+    <% include ../partials/scripts.ejs %>
 
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script type="text/javascript" src="/socket.io/socket.io.js"></script>
     <script type="text/javascript" src="/javascripts/chatroom.js"></script>
 

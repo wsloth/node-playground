@@ -1,21 +1,50 @@
 var connected_rooms = {};
 var username;
 
-// TODO: When client connects to the server -> join a room
-// when a room is joined, add these to connected_rooms
-// when the connection fails and the client needs to reconnect, connect to
-// all rooms in the connected_rooms variable
+var socket;
 
-var socket = io();
-socket.on('new message', function (message) {
-  // TODO: Append message to chat window
+
+// Asynchronously load new javascripts
+function loadJS(src, callback) {
+    var s = document.createElement('script');
+    s.src = src;
+    s.async = true;
+    s.onreadystatechange = s.onload = function() {
+        var state = s.readyState;
+        if (!callback.done && (!state || /loaded|complete/.test(state))) {
+            callback.done = true;
+            callback();
+        }
+    };
+    document.getElementsByTagName('head')[0].appendChild(s);
+}
+
+function throwPrefaceFormValidationError () {
+  $("#loading").fadeToggle('slow');
+  $("#preface").fadeToggle('slow');
+
+  if (!$("#preface-form-error").is(":visible")) {
+    $("#preface-form-error").fadeToggle(2500);;
+  }
+};
+
+// Preface form submit
+$("#preface-submit").click(function() {
+  $("#preface").fadeToggle('slow');
+  $("#loading").fadeToggle('slow');
+
+  var nickname = $("#preface-nickname").val();
+  var room = $("#preface-room-name").val();
+
+  if ((nickname == "") || (room == "") || (nickname === undefined) || (room === undefined)) {
+    throwPrefaceFormValidationError();
+    return;
+  }
+
+  loadJS('/javascripts/chatController.js', function() {
+      initializeChat(nickname, room);
+  });
+
+  socket = io('http://localhost:8000/chat');
+  console.log("Chat sockets initialized..");
 });
-
-socket.on('status message', function (message) {
-  // TODO: Append a _server message_ to the chat window
-  // These can be: disconnects, connects, server status
-});
-
-setInterval(function () {
-  // TODO: Every x seconds, load the current user list
-}, 5000);
