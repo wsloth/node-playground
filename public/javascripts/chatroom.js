@@ -6,17 +6,17 @@ var socket;
 
 // Asynchronously load new javascripts
 function loadJS(src, callback) {
-    var s = document.createElement('script');
-    s.src = src;
-    s.async = true;
-    s.onreadystatechange = s.onload = function() {
-        var state = s.readyState;
-        if (!callback.done && (!state || /loaded|complete/.test(state))) {
-            callback.done = true;
-            callback();
-        }
-    };
-    document.getElementsByTagName('head')[0].appendChild(s);
+  var s = document.createElement('script');
+  s.src = src;
+  s.async = true;
+  s.onreadystatechange = s.onload = function() {
+    var state = s.readyState;
+    if (!callback.done && (!state || /loaded|complete/.test(state))) {
+      callback.done = true;
+      callback();
+    }
+  };
+  document.getElementsByTagName('head')[0].appendChild(s);
 }
 
 function throwPrefaceFormValidationError () {
@@ -42,6 +42,8 @@ $("#preface-submit").click(function() {
   }
 
   loadJS('/javascripts/chatController.js', function() {
+      loadJS('//cdn.jsdelivr.net/emojione/1.4.1/lib/js/emojione.min.js');
+      $('head').append('<link rel="stylesheet" href="//cdn.jsdelivr.net/emojione/1.4.1/assets/css/emojione.min.css"/>')
       initializeChat(nickname, room);
   });
 

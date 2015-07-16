@@ -26,6 +26,22 @@ body {
 /* App css styles
 ---------------------- */
 
+#logo-container {
+  height: 57px;
+  margin-bottom: 32px;
+}
+#front-page-logo {
+  display: inline-block;
+  height: 100%;
+  pointer-events: none;
+}
+ul.side-nav.fixed li.logo {
+  text-align: center;
+  padding-top: 32px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid #ddd;
+}
+
 @media only screen and (min-width: 992px) {
   header, main, footer {
     padding-left: 240px;
@@ -38,5 +54,36 @@ body {
 
   .brand-logo {
     margin-left: 0.7em;
+  }
+}
+
+/* Message view
+----------------------------------------------------------------------------- */
+#chat-view {
+  padding-bottom: 62px;
+}
+
+.message {
+  padding-left: 1em;
+}
+
+
+/* Chat entry field
+----------------------------------------------------------------------------- */
+#chat-entry-field {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+nav .input-field label.active i {
+  padding-top: 3px;
+  color: #424242;
+}::-webkit-input-placeholder {color: #424242;}:-moz-placeholder {color: #424242;
+}::-moz-placeholder {color: #424242;}:-ms-input-placeholder {color: #424242;}
+
+@media only screen and (max-width: 600px) {
+  .input-field input[type=search] {
+    padding-left: 5px;
+    width: 100%;
   }
 }

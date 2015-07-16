@@ -1,32 +1,83 @@
 <ul id="slide-out" class="side-nav fixed">
-  <li><a href="#!">First Sidebar Link</a></li>
-  <li><a href="#!">Second Sidebar Link</a></li>
+  <li class="logo">
+    <a id="logo-container" href="#" class="brand-logo">
+    <object id="front-page-logo" type="image/svg+xml" data="http://materializecss.com/res/materialize.svg">Your browser does not support SVG</object>
+    </a>
+  </li>
+
+  <li class="active"><a href="#" class="waves-effect waves-dark">General channel</a></li>
+  <li><a href="#" class="waves-effect waves-dark">Help channel</a></li>
 </ul>
 
 <main>
 
   <div class="navbar-fixed">
-      <nav>
-        <div class="nav-wrapper">
+    <nav class="teal">
+      <div class="nav-wrapper">
+        <a href="#" class="brand-logo">Websocket chatroom</a>
+        <a href="#" data-activates="mobile-menu" class="button-collapse"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+          <li><a href="sass.html">Sass</a></li>
+          <li><a href="badges.html">Components</a></li>
+          <li><a href="collapsible.html">Javascript</a></li>
+          <li><a href="mobile.html">Mobile</a></li>
+        </ul>
+        <ul class="side-nav" id="mobile-menu">
+          <li><a href="sass.html">Sass</a></li>
+          <li><a href="badges.html">Components</a></li>
+          <li><a href="collapsible.html">Javascript</a></li>
+          <li><a href="mobile.html">Mobile</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
 
-          <a href="#!" class="brand-logo">Websocket Chatroom</a>
-          <a href="#" data-activates="mobile-menu" class="button-collapse"><i class="material-icons">menu</i></a>
+  <section id="chat-view">
+    <p class="message">Admin: Hello world!</p>
+    <p class="message">Admin: Hello world!</p>
+    <p class="message">Admin: Hello world!</p>
+    <p class="message">Admin: Hello world!</p>
+    <p class="message">Admin: Hello world!</p>
+    <p class="message">Admin: Hello world!</p>
+    <p class="message">Admin: Hello world!</p>
+    <p class="message">Admin: Hello world!</p>
+    <p class="message">Admin: Hello world!</p>
+    <p class="message">Admin: Hello world!</p>
+    <p class="message">Admin: Hello world!</p>
+    <p class="message">Admin: Hello world!</p>
+    <p class="message">Admin: Hello world!</p>
+    <p class="message">Admin: Hello world!</p>
+    <p class="message">Admin: Hello world!</p>
+    <p class="message">Admin: Hello world!</p>
+    <p class="message">Admin: Hello world!</p>
+    <p class="message">Admin: Hello world!</p>
+    <p class="message">Admin: Hello world!</p>
+    <p class="message">Admin: Hello world!</p>
+    <p class="message">Admin: Hello world!</p>
+    <p class="message">Admin: Hello world!</p>
+    <p class="message">Admin: Hello world!</p>
+    <p class="message">Admin: Hello world!</p>
+    <p class="message">Admin: Hello world!</p>
+    <p class="message">Admin: Hello world!</p>
+    <p class="message">Admin: Hello world!</p>
+    <p class="message">Admin: Hello world! This is the final message.</p>
+  </section>
 
-          <ul class="right hide-on-med-and-down">
-            <li><a href="sass.html">Sass</a></li>
-            <li><a href="badges.html">Components</a></li>
-          </ul>
 
-          <ul class="side-nav right" id="mobile-menu">
-            <li><a href="sass.html">Sass</a></li>
-            <li><a href="badges.html">Components</a></li>
-          </ul>
+  <div id="chat-entry-field">
+    <nav class="blue-grey lighten-4">
+      <div class="nav-wrapper">
+        <form>
+          <div class="input-field">
+            <input id="search" type="search" required placeholder="Type a message">
+            <label for="search" class="hide-on-small-only">
+                <i class="material-icons">chat_bubble_outline</i>
+            </label>
+          </div>
+        </form>
+      </div>
+    </nav>
+  </div>
 
-        </div>
-      </nav>
-    </div>
 
-  <a href="#" data-activates="slide-out" class="button-collapse">
-    <i class="mdi-navigation-menu"></i>
-  </a>
 </main>
