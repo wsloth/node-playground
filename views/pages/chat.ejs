@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chatroom with websockets</title>
+    <% include ../partials/header.ejs %>
+  </head>
+
+  <body>
+    <% include ../partials/nav.ejs %>
+
+    <div class="container main-page">
+      <div class="col-md-12">
+        <h1>Chatroom</h1>
+      </div>
+    </div>
+
+    <% include ../partials/footer.ejs %>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+    <script type="text/javascript" src="/javascripts/chatroom.js"></script>
+
+  </body>
+</html>
