@@ -57,7 +57,7 @@ var chatHistory = {'general': {}};
 // Chatroom networking code
 var chatRoom = io.of('/chat');
 chatRoom.on('connection', function (socket) {
-    
+
   console.log('New user ' + socket.id + ' connected');
 
   socket.on('joinServer', function (nickname) {
@@ -83,6 +83,7 @@ chatRoom.on('connection', function (socket) {
       socket.emit('serverMessage', "You have successfully connected");
 
       socket.join('general');
+      socket.broadcast.to('general').emit('newUser', {username: people[socket.id].name, id: socket.id});
     };
   });
 
@@ -90,17 +91,18 @@ chatRoom.on('connection', function (socket) {
     console.log(people[socket.id].name + ": " + data.message);
 
     socket.broadcast.to('general').emit('chat', people[socket.id], data.message);
-
   });
 
   socket.on('disconnect', function () {
-    console.log(people[socket.id].name + ' disconnected');
+    console.log(socket.id + ' disconnected');
+    // If has username -> show disconnect message
+    socket.broadcast.to('general').emit('socketDisconnect', socket.id);
   });
 });
 
 app.use(function(req, res) {
   // TODO: Make a 404 page
-  res.status(404).end('error');
+  res.status(404).end('404 Not found');
 });
 
 // listen on port 8000 (for localhost) or the port defined for heroku

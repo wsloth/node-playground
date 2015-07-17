@@ -52,13 +52,32 @@ ul.side-nav.fixed li.logo {
     }
 }
 
+/* Sidenav & Mobile menu
+----------------------------------------------------------------------------- */
+.side-nav > li > a > .material-icons {
+  font-size: 16px;
+}
+.side-nav > li > a > .icons-text {
+  margin-top: -3px;
+}
+
 /* Message view
 ----------------------------------------------------------------------------- */
 #chat-view {
     padding-bottom: 62px;
+    padding-left: 1em;
+    width: 100%;
+    word-wrap: break-word;
 }
 .message {
-    padding-left: 1em;
+}
+
+.local-message {
+
+}
+.local-message > .username {
+    font-weight: bold;
+    color: orange;
 }
 
 /* Chat entry field

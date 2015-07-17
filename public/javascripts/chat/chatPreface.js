@@ -1,8 +1,6 @@
 var connected_rooms = {};
 var username;
-
 var socket;
-
 
 // Asynchronously load new javascripts
 function loadJS(src, callback) {
@@ -40,21 +38,24 @@ $("#preface-submit").click(function() {
     return;
   }
 
-  socket = io('https://websocket-sandbox.herokuapp.com/chat');
+  socket = io('http://localhost:8000/chat');
+  // http://localhost:8000/chat
+  // https://websocket-sandbox.herokuapp.com/chat
   console.log("Chat sockets initialized");
 
   console.log('Loading scripts...');
 
-
+  loadJS('/javascripts/chat/chatView.js', function() {});
   loadJS('//cdn.jsdelivr.net/emojione/1.4.1/lib/js/emojione.min.js', function() {});
   loadJS('/libs/textcomplete/jquery.textcomplete.min.js', function() {});
-          
-  console.log('All scripts loaded');
-      
-  loadJS('/javascripts/chatController.js', function() {
+  loadJS('/javascripts/chat/chatEmoji.js', function() {});
+
+  loadJS('/javascripts/chat/chatController.js', function() {
     $('head').append('<link rel="stylesheet" href="//cdn.jsdelivr.net/emojione/1.4.1/assets/css/emojione.min.css"/>');
     $('head').append('<link rel="stylesheet" href="/libs/textcomplete/jquery.textcomplete.css"/>');
+
+    console.log('All scripts loaded');
     initializeChat(nickname);
   });
-  
+
 });
