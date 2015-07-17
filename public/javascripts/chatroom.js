@@ -40,7 +40,7 @@ $("#preface-submit").click(function() {
     return;
   }
 
-  socket = io('http://localhost:8000/chat');
+  socket = io('https://websocket-sandbox.herokuapp.com/chat');
   console.log("Chat sockets initialized");
 
   console.log('Loading scripts...');
