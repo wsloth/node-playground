@@ -24,7 +24,7 @@ function throwPrefaceFormValidationError () {
   $("#preface").fadeToggle('slow');
 
   if (!$("#preface-form-error").is(":visible")) {
-    $("#preface-form-error").fadeToggle(2500);;
+    $("#preface-form-error").fadeToggle(2500);
   }
 };
 
@@ -34,9 +34,8 @@ $("#preface-submit").click(function() {
   $("#loading").fadeToggle('slow');
 
   var nickname = $("#preface-nickname").val();
-  var room = $("#preface-room-name").val();
 
-  if ((nickname == "") || (room == "") || (nickname === undefined) || (room === undefined)) {
+  if ((nickname == "") || (nickname === undefined)) {
     throwPrefaceFormValidationError();
     return;
   }
@@ -55,7 +54,7 @@ $("#preface-submit").click(function() {
   loadJS('/javascripts/chatController.js', function() {
     $('head').append('<link rel="stylesheet" href="//cdn.jsdelivr.net/emojione/1.4.1/assets/css/emojione.min.css"/>');
     $('head').append('<link rel="stylesheet" href="/libs/textcomplete/jquery.textcomplete.css"/>');
-    initializeChat(nickname, room);
+    initializeChat(nickname);
   });
   
 });

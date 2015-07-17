@@ -1,5 +1,7 @@
-var initializeChat = function(nickname, room) {
-    console.log("Joining room \"" + room + "\"...");
+var initializeChat = function(nickname) {
+    console.log("Joining main room...");
+
+    socket.emit('joinServer', nickname);
 
     $("#loading").fadeToggle('slow');
 
@@ -13,14 +15,42 @@ var initializeChat = function(nickname, room) {
 // when a room is joined, add these to connected_rooms
 // when the connection fails and the client needs to reconnect, connect to
 // all rooms in the connected_rooms variable
+var chatWindow = $('#chat-view');
+function newMessage (person, message) {
+    chatWindow.append("<p class='message'>" + person.name + ": " + message + "</p>");
 
-socket.on('new message', function(message) {
+    $(".message").each(function() {
+        var original = $(this).html();
+        var converted = emojione.shortnameToImage(original);
+        $(this).html(converted);
+    });
+}
+
+socket.on('chat', function(person, message) {
     // TODO: Append message to chat window
+    console.log(person.name + ': ' + message);
+    newMessage(person, message);
 });
 
-socket.on('status message', function(message) {
-    // TODO: Append a _server message_ to the chat window
+socket.on('serverMessage', function(message) {
     // These can be: disconnects, connects, server status
+    Materialize.toast(message, 10000);
+});
+
+$('#chat-input').keypress(function (e) {
+  if (e.which == 13) {
+    var message = $('#chat-input');
+    if ((message.val() != "") && (message.val() !== undefined)) {
+        newMessage({name: 'You'}, message.val());
+        socket.emit('send', {room: 'general', message: message.val()});
+        message.val('');
+    }
+    return false;
+  }
+});
+
+socket.on('disconnect', function() {
+   Materialize.toast('You have been disconnected', 10000); 
 });
 
 setInterval(function() {

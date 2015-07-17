@@ -2,6 +2,7 @@ var express = require('express');
 var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
+var _ = require('underscore')._;
 
 // User the EJS view engine
 app.set('view engine', 'ejs');
@@ -47,17 +48,53 @@ markdownEditor.on('connection', function (socket) {
 
 });
 
+// Chatroom code /////////////////////////////////////////////////////////////////////////
+var people = {};
+var rooms = {};
+var sockets = [];
+var chatHistory = {'general': {}};
 
 // Chatroom networking code
 var chatRoom = io.of('/chat');
-chatRoom.on('connection', function(connection) {
-  connection.on('connection', function(socket) {
-    console.log('A new user connected to the chat');
+chatRoom.on('connection', function (socket) {
+    
+  console.log('New user ' + socket.id + ' connected');
 
-    socket.on('disconnect', function (socket) {
-      console.log('A user disconnected');
+  socket.on('joinServer', function (nickname) {
+    var exists = false;
+
+    _.find(people, function (key, val) {
+      if (key.name.toLowerCase() === nickname.toLowerCase()) {
+        return exists = true;
+      };
     });
 
+    if (exists) {
+      socket.emit('userExists', "This username is already taken.");
+    } else {
+      people[socket.id] = {
+        name: nickname.toLowerCase(),
+        rooms: {}
+      };
+      sockets.push(socket);
+
+      // TODO: Message everyone that a new user connected
+      console.log(nickname + " joined the chat server");
+      socket.emit('serverMessage', "You have successfully connected");
+
+      socket.join('general');
+    };
+  });
+
+  socket.on('send', function (data) {
+    console.log(people[socket.id].name + ": " + data.message);
+
+    socket.broadcast.to('general').emit('chat', people[socket.id], data.message);
+
+  });
+
+  socket.on('disconnect', function () {
+    console.log(people[socket.id].name + ' disconnected');
   });
 });
 
