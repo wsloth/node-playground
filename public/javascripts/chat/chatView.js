@@ -38,3 +38,17 @@ function loadEmoji () {
 
   $("html, body").animate({ scrollTop: $(document).height() }, "slow");
 }
+
+
+$().ready(function () {
+  if (Modernizr.localstorage) {
+      var ua = navigator.userAgent.toLowerCase();
+      var isAndroid = ua.indexOf("android") > -1;
+      if (isAndroid) {
+          if (!localStorage['alreadyVisited']) {
+             localStorage['alreadyVisited'] = 'yes';
+             Materialize.toast('Tip: Add the website to your homescreen!', 10000);
+         }
+      }
+  }
+});

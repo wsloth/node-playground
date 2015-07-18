@@ -38,7 +38,7 @@ $("#preface-submit").click(function() {
     return;
   }
 
-  socket = io('https://websocket-sandbox.herokuapp.com/chat');
+  socket = io('/chat');
   // http://localhost:8000/chat
   // https://websocket-sandbox.herokuapp.com/chat
   console.log("Chat sockets initialized");
@@ -49,6 +49,7 @@ $("#preface-submit").click(function() {
   loadJS('//cdn.jsdelivr.net/emojione/1.4.1/lib/js/emojione.min.js', function() {});
   loadJS('/libs/textcomplete/jquery.textcomplete.min.js', function() {});
   loadJS('/javascripts/chat/chatEmoji.js', function() {});
+  loadJS('https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js', function() {});
 
   loadJS('/javascripts/chat/chatController.js', function() {
     $('head').append('<link rel="stylesheet" href="//cdn.jsdelivr.net/emojione/1.4.1/assets/css/emojione.min.css"/>');
