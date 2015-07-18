@@ -1,47 +1,89 @@
-<div class="row">
-  <div class="col s12 m8 offset-m2 l6 offset-l3">
-    <div class="card teal">
-      <div class="card-content white-text">
-        <span class="card-title">Simple Chatroom</span>
-        <p>
-          This is a test of a simple chatroom application that uses
-          HTML5 Websockets to make a seamless instant-messaging chatroom.
-          Please use the form below to sign in.
-        </p>
-      </div>
+<div class="navbar-fixed hide-on-med-and-up">
+  <nav class="teal">
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">Sign in</a>
     </div>
-  </div>
+  </nav>
 </div>
 
-<div class="row">
-  <div class="col s12 m8 offset-m2 l6 offset-l3">
-    <div class="card hoverable">
-      <div class="card-content">
+<div class="container">
 
-        <span class="card-title black-text">Sign in</span>
-
-        <div class="row">
-
-          <div class="input-field col s12">
-            <input id="preface-nickname" type="text" length="20">
-            <label for="input_text">Nickname</label>
-          </div>
-
-
+  <div class="row">
+    <div class="col s12 m8 offset-m2 l6 offset-l3">
+      <div class="card cyan darken-2">
+        <div class="card-content white-text">
+          <span class="card-title">Notice</span>
+          <p>
+            If the chatroom takes too long to load, please refresh the page and
+            try again. If it aborts without warning, please pick another username
+            and try again.
+          </p>
         </div>
-
-        <p id="preface-form-error" class="left red-text text-darken-2">
-          The nickname entered is not valid. Please pick another name.
-        </p>
-
-        <button class="btn waves-effect waves-light right" id="preface-submit">Submit
-          <i class="material-icons right">send</i>
-        </button>
-
-        <br/><br/>
       </div>
     </div>
   </div>
-</div>
+  
+  <div class="row">
+    <div class="col s12 m8 offset-m2 l6 offset-l3">
+      <div class="card hoverable">
+        <div class="card-content">
+  
+          <span class="card-title black-text">Sign in</span>
+  
+          <div class="row">
+  
+            <div class="input-field col s12">
+              <input id="preface-nickname" type="text" length="20">
+              <label for="input_text">Nickname</label>
+            </div>
+  
+  
+          </div>
+  
+          <p id="preface-form-error" class="left red-text text-darken-2">
+            The nickname you entered is not valid. Please pick another name.
+          </p>
+  
+          <button class="btn waves-effect waves-light right" id="preface-submit">Submit
+            <i class="material-icons right">send</i>
+          </button>
+  
+          <br/><br/>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col s12 m8 offset-m2 l6 offset-l3">
+      <div class="card">
+        <div class="card-content">
+          <span class="card-title black-text">Tips</span>
+          <p>
+            If you're using this webapplication on your iOS or Android phone,
+            add the page to your homescreen. This will allow you to use the chatroom
+            in fullscreen, making it much more comfortable to use.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col s12 m8 offset-m2 l6 offset-l3">
+      <div class="card">
+        <div class="card-content">
+          <span class="card-title black-text">About</span>
+          <p>
+            This is a test of a simple chatroom application that uses
+            HTML5 Websockets to make a seamless instant-messaging chatroom.
+            Please use the form below to sign in.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <p class="center-align">Made with <b><a href="https://nodejs.org/">Node.js</b></a> and <b><a href="http://socket.io">Socket.io</a></b></p>
 
-<p class="center-align">Made with <b><a href="https://nodejs.org/">Node.js</b></a> and <b><a href="http://socket.io">Socket.io</a></b></p>
+</div>

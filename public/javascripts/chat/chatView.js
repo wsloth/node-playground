@@ -29,6 +29,12 @@ $('#chat-input').keypress(function (e) {
   }
 });
 
+function fieldFocus() {
+  if (isAndroid()) {
+    scrollToBottom();
+  }
+}
+
 function loadEmoji () {
   $(".message").each(function() {
       var original = $(this).html();
@@ -36,15 +42,25 @@ function loadEmoji () {
       $(this).html(converted);
   });
 
+  scrollToBottom();
+}
+
+function scrollToBottom() {
   $("html, body").animate({ scrollTop: $(document).height() }, "slow");
 }
 
+function isAndroid() {
+  var ua = navigator.userAgent.toLowerCase();
+  var android = ua.indexOf("android") > -1;
+  if (android) {
+    return true;
+  }
+  return false;
+}
 
 $().ready(function () {
   if (Modernizr.localstorage) {
-      var ua = navigator.userAgent.toLowerCase();
-      var isAndroid = ua.indexOf("android") > -1;
-      if (isAndroid) {
+      if (isAndroid()) {
           if (!localStorage['alreadyVisited']) {
              localStorage['alreadyVisited'] = 'yes';
              Materialize.toast('Tip: Add the website to your homescreen!', 10000);

@@ -2,11 +2,6 @@ body {
     background: #f2f2f2;
     color: #212121;
 }
-@media only screen and (min-width: 992px) {
-  #preface {
-      margin-top: 5em;
-  }
-}
 #preface-form-error {
     display: none;
 }
@@ -38,6 +33,10 @@ ul.side-nav.fixed li.logo {
     border-bottom: 1px solid #ddd;
 }
 @media only screen and (min-width: 992px) {
+    #preface {
+        margin-top: 2em;
+    }
+    
     header,
     main,
     footer {
