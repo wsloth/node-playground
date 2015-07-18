@@ -43,10 +43,12 @@ socket.on('connection', function () {
 
 socket.on('userExists', function (message) {
     console.log('User already exists');
+    // TODO: Handle error in preface
+    // (Make a reverse-initialization func where all the steps are reversed)
 });
 
-socket.on('chat', function(person, message) {
-    newMessage(person, message);
+socket.on('chat', function(username, message) {
+    addChatMessageToView(username, message);
 });
 
 socket.on('serverMessage', function(message) {
@@ -55,7 +57,7 @@ socket.on('serverMessage', function(message) {
 });
 
 socket.on('newUser', function(data) {
-    statusMessage(data.username + ' (' + data.id + ') connected');
+    statusMessage(data.username + ' connected');
     users[data.id] = data.username;
 });
 socket.on('socketDisconnect', function(username) {

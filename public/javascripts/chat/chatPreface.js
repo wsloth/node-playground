@@ -46,9 +46,10 @@ $("#preface-submit").click(function() {
   console.log('Loading scripts...');
 
   loadJS('/javascripts/chat/chatView.js', function() {});
-  loadJS('//cdn.jsdelivr.net/emojione/1.4.1/lib/js/emojione.min.js', function() {});
   loadJS('/libs/textcomplete/jquery.textcomplete.min.js', function() {});
+  loadJS('//cdn.jsdelivr.net/emojione/1.4.1/lib/js/emojione.min.js', function() {});
   loadJS('/javascripts/chat/chatEmoji.js', function() {});
+  loadJS('/libs/autolinker/autolinker.min.js', function() {});
   loadJS('https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js', function() {});
 
   loadJS('/javascripts/chat/chatController.js', function() {

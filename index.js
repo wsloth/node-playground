@@ -51,7 +51,12 @@ markdownEditor.on('connection', function(socket) {
 
 });
 
-// Chatroom code /////////////////////////////////////////////////////////////////////////
+var handlerObject = require('./chat.js');
+var handler;
+var chatRoom = io.of('/chat');
+chatRoom.on('connection', function (socket) { handler = new handlerObject(socket); });
+
+/* Chatroom code /////////////////////////////////////////////////////////////////////////
 var people = {};
 var rooms = {};
 var sockets = [];
@@ -105,15 +110,18 @@ chatRoom.on('connection', function(socket) {
 	});
 
 	socket.on('disconnect', function() {
-		console.log(socket.id + ' disconnected');
 		sockets.splice(sockets.indexOf(socket), 1);
 		delete people[socket.id];
 		
 		if (username !== "_nousr") { 
 			socket.broadcast.to('general').emit('socketDisconnect', username);
+			console.log(username + ' disconnected');
+		} else {
+			console.log(socket.id + ' (nousr) disconnected');
 		}
 	});
 });
+*/
 
 app.use(function(req, res) {
 	res.status(404).end('404 Not found');
