@@ -4,6 +4,7 @@
 // all rooms in the connected_rooms variable
 var connected = false;
 var isDisconnected = false;
+var reconnecting = false;
 var username;
 var users = {};
 
@@ -30,7 +31,7 @@ function finalizeChat() {
 
 socket.on('successfulJoin', function (data) {
     console.log('Successfully connected to server');
-    if (!isDisconnected) {
+    if ((!isDisconnected) && (!reconnecting)) {
         finalizeChat();
     } else {
         isDisconnected = false;
@@ -74,12 +75,14 @@ function reconnect () {
     Materialize.toast('You have been disconnected. Reconnecting...', 5000);
     var timer = 5000;
     var times = 1;
+    reconnecting = true;
     
     var reconnectLoop = function () {
         console.log(interval);
         if (!isDisconnected) {
             statusMessage('Reconnected to server');
             clearInterval(interval);
+            reconnecting = false;
             
             for (var i = 1; i < 5000; i++) {
                 window.clearInterval(i);

@@ -7,15 +7,13 @@
   </li>
   -->
 
-  <li class="active"><a href="#" class="waves-effect waves-dark">General channel</a></li>
-  <li><a href="#" class="waves-effect waves-dark">Help channel</a></li>
+  <li class="active"><a href="#" class="waves-effect waves-dark">#general</a></li>
+  <li><a class="waves-effect waves-dark modal-trigger" data-target="userListModal">Online users</a></li>
+
   <li class="divider">&nbsp;</li>
-  <li><a href="https://nodejs.org/">Node.js</a></li>
-  <li><a href="http://socket.io/">Socket.io</a></li>
-  <li><a href="http://expressjs.com/">Express.js</a></li>
-  <li class="divider">&nbsp;</li>
-  <li><a href="#">Settings</span></a></li>
-  <li><a href="#">About</span></a></li>
+  
+  <li><a class="modal-trigger" data-target="settingsModal">Settings</span></a></li>
+  <li><a class="modal-trigger" data-target="aboutModal">About</span></a></li>
 </ul>
 
 <main>
@@ -23,24 +21,17 @@
   <div class="navbar-fixed">
     <nav class="teal">
       <div class="nav-wrapper">
-        <a href="#" class="brand-logo">chatroom</a>
+        <a href="#" class="brand-logo">#general</a>
         <a href="#" data-activates="mobile-menu" class="button-collapse"><i class="material-icons">menu</i></a>
-        <ul class="right hide-on-med-and-down">
-          <li><a href="https://nodejs.org/">Node.js</a></li>
-          <li><a href="http://socket.io/">Socket.io</a></li>
-          <li><a href="http://expressjs.com/">Express.js</a></li>
-        </ul>
 
         <ul class="side-nav" id="mobile-menu">
           <li class="active"><a href="#" class="waves-effect waves-dark">General channel</a></li>
-          <li><a href="#" class="waves-effect waves-dark">Help channel</a></li>
+          <li><a class="waves-effect waves-dark modal-trigger" data-target="userListModal">Online users</a></li>
+
           <li class="divider">&nbsp;</li>
-          <li><a href="https://nodejs.org/">Node.js</a></li>
-          <li><a href="http://socket.io/">Socket.io</a></li>
-          <li><a href="http://expressjs.com/">Express.js</a></li>
-          <li class="divider">&nbsp;</li>
-          <li><a href="#">Settings</span></a></li>
-          <li><a href="#">About</span></a></li>
+          
+          <li><a class="modal-trigger" data-target="settingsModal">Settings</span></a></li>
+          <li><a class="modal-trigger" data-target="aboutModal">About</span></a></li>
         </ul>
 
       </div>
@@ -48,10 +39,8 @@
   </div>
 
   <section id="chat-view">
-    <p class="message">MOTD: Hello world! :smile: :heart:</p>
-    
-    
-    
+    <p id="motd">MOTD: Hello world! :smile: :heart:</p>
+  
   </section>
 
 
@@ -68,7 +57,6 @@
               contentEditable="true"
               onfocus="fieldFocus()">
 
-
             <label for="chat-input" class="hide-on-small-only">
                 <i class="material-icons">chat_bubble_outline</i>
             </label>
@@ -81,5 +69,75 @@
 
 </main>
 
+<div id="userListModal" class="modal bottom-sheet">
+  
+  <div class="modal-content">
+    <h4>Online Users (coming soon)</h4>
+    <ul class="collection">
+      <li class="collection-item avatar">
+        <img src="http://smartfaucets.oras.com/img/symbol_user_friendliness.jpg" alt="" class="circle">
+        <span class="title">Username</span>
+      </li>
+      <li class="collection-item avatar">
+        <img src="http://smartfaucets.oras.com/img/symbol_user_friendliness.jpg" alt="" class="circle">
+        <span class="title">Username</span>
+      </li>
+      <li class="collection-item avatar">
+        <img src="http://smartfaucets.oras.com/img/symbol_user_friendliness.jpg" alt="" class="circle">
+        <span class="title">Username</span>
+      </li>
+      <li class="collection-item avatar">
+        <img src="http://smartfaucets.oras.com/img/symbol_user_friendliness.jpg" alt="" class="circle">
+        <span class="title">Username</span>
+      </li>
+      <li class="collection-item avatar">
+        <img src="http://smartfaucets.oras.com/img/symbol_user_friendliness.jpg" alt="" class="circle">
+        <span class="title">Username</span>
+      </li>
+      <li class="collection-item avatar">
+        <img src="http://smartfaucets.oras.com/img/symbol_user_friendliness.jpg" alt="" class="circle">
+        <span class="title">Username</span>
+      </li>
+      <li class="collection-item avatar">
+        <img src="http://smartfaucets.oras.com/img/symbol_user_friendliness.jpg" alt="" class="circle">
+        <span class="title">Username</span>
+      </li>
+    </ul>
+  </div>
+  
+  <div class="modal-footer">
+    <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+  </div>
+</div>
+
+<div id="settingsModal" class="modal bottom-sheet">
+  <div class="modal-content">
+    <h4>Settings</h4>
+    <p>Coming soon...</p>
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+  </div>
+</div>
+
+<div id="aboutModal" class="modal bottom-sheet">
+  <div class="modal-content">
+    <h3>About</h3>
+    <h5>Planned features</h5>
+    <ul>
+      <li>Multiple rooms</li>
+      <li>Private messaging</li>
+      <li>Chatbots</li>
+      <li>/-commands</li>
+      <li>Inline image viewing</li>
+      <li>User-registration</li>
+      <li>Permissions</li>
+    </ul>
+    
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+  </div>
+</div>
 
 <% include templates.ejs %>

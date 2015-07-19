@@ -27,7 +27,18 @@ function throwPrefaceFormValidationError () {
 };
 
 // Preface form submit
+$("#preface-nickname").keypress(function (event) {
+  console.log('kp');
+  if (event.which == 13) {
+    submitPrefaceForm();
+  };
+});
+
 $("#preface-submit").click(function() {
+  submitPrefaceForm();
+});
+
+function submitPrefaceForm () {
   $("#preface").fadeToggle('slow');
   $("#loading").fadeToggle('slow');
 
@@ -60,4 +71,4 @@ $("#preface-submit").click(function() {
     initializeChat(nickname);
   });
 
-});
+};

@@ -45,6 +45,7 @@ var chatHandler = function (socket) {
 				username: username,
 				id: socket.id
 			});
+			
         } else {
             socket.emit('userExists', 'This username is already taken.');
         }
